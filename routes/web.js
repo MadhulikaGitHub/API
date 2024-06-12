@@ -4,6 +4,7 @@ const router = express.Router()
 const {ChangeUserAuth} = require('../middleware/auth')
 const ProductController = require('../controllers/ProductController')
 const CategoryController = require('../controllers/CategoryController')
+const SliderController = require('../controllers/SliderController')
 
 //UserController
 router.get('/getAllUsers', UserController.getAllUsers)
@@ -30,5 +31,13 @@ router.get('/product/getAdminProduct', ProductController.getAdminProduct)
 router.get('/product/deleteProduct/:id', ProductController.deleteProduct)
 router.post('/product/create', ProductController.createProduct)
 router.post('/product/updateProduct/:id', ProductController.updateProduct)
+
+// SliderController
+router.get('/displaySlider', SliderController.displaySlider)
+router.post('/insertSlider', SliderController.insertSlider)
+router.get('/viewSlider/:id', SliderController.viewSlider)
+router.post('/updateSlider/:id', SliderController.updateSlider)
+router.get('/deleteSlider/:id', SliderController.deleteSlider)
+
 
 module.exports = router
