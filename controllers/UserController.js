@@ -210,15 +210,17 @@ class UserController {
     static updateProfile = async (req, res) => {
         try {
             //console.log(req.body)
-            if (req.file) {
+            if (req.files) {
                 const user = await UserModel.findById(req.user.id);
+                //console.log(user)
                 const image_id = user.image.public_id;
                 await cloudinary.uploader.destroy(image_id);
 
-                const file = req.files.image;
+                const file = req.files.image
+                //console.log(file)
                 const myimage = await cloudinary.uploader.upload(file.tempFilePath, {
                     folder: "profileapi",
-                    width: 150,
+                    // width: 150,
                 });
                 var data = {
                     name: req.body.name,
