@@ -6,6 +6,7 @@ const ProductController = require('../controllers/ProductController')
 const CategoryController = require('../controllers/CategoryController')
 const SliderController = require('../controllers/SliderController')
 const PaymentController = require('../controllers/PaymentController')
+const OrderController = require('../controllers/OrderController')
 
 //UserController
 router.get('/getAllUsers', UserController.getAllUsers)
@@ -43,5 +44,12 @@ router.get('/deleteSlider/:id', SliderController.deleteSlider)
 // PaymentController
 router.post('/payment/process', PaymentController.processPayment)
 router.get('/stripeapiKey', PaymentController.sendStripeApiKey)
+
+//OrderController
+router.post('/order/create',ChangeUserAuth, OrderController.newOrder)
+router.get('/order/getSingleOrder/:id',ChangeUserAuth, OrderController.getSingleOrder)
+router.get('/order/myOrder',ChangeUserAuth, OrderController.myOrder)
+router.get('/order/getAllOrders',ChangeUserAuth, OrderController.getAllOrders)
+router.get('/order/deleteOrder/:id', ChangeUserAuth,OrderController.deleteOrder)
 
 module.exports = router
