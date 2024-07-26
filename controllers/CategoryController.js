@@ -67,7 +67,7 @@ class CategoryController {
     static updateCategory = async (req, res) => {
         try {
             //console.log(req.body)
-            if (req.files.images) {
+            if (req.files) {
                 const category = await categoryModel.findById(req.params.id);
                 const image_id = category.images.public_id;
                 await cloudinary.uploader.destroy(image_id);
@@ -94,6 +94,9 @@ class CategoryController {
                 req.params.id,
                 data
             );
+
+            await updateCategory.save()
+            
             res.status(200).json({
                 success: true,
                 updateCategory,
