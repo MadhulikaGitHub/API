@@ -95,8 +95,6 @@ class CategoryController {
                 data
             );
 
-            await updateCategory.save()
-            
             res.status(200).json({
                 success: true,
                 updateCategory,
