@@ -68,7 +68,8 @@ class CategoryController {
         try {
             //console.log(req.body)
             if (req.files) {
-                const category = await categoryModel.findById(req.params.id);
+                const category = await CategoryModel.findById(req.params.id);
+                //console.log(category)
                 const image_id = category.images.public_id;
                 await cloudinary.uploader.destroy(image_id);
 
